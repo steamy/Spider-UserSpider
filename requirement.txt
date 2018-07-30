@@ -1,0 +1,4 @@
+redis
+SQLAlchemy
+mysql-connector-python
+PyMySQL
