@@ -141,8 +141,8 @@ class MyHttpProxyMiddleware(HttpProxyMiddleware):
 
     def process_request(self, request, spider):
         r = Redis(connection_pool=redisPool)
-        items = r.hgetall(useful_proxy)
-        proxy =  random.choice(list(items))
+        items = r.hkeys(useful_proxy)
+        proxy = random.choice(list(items))
         print(proxy)
         request.meta['download_timeout'] = 8
         request.meta['proxy'] = 'http://' + str(proxy)
