@@ -45,10 +45,9 @@ def watcher():
 if __name__ == '__main__':
     while True:
        #schedule.run_pending()
+       r = Redis(connection_pool=redisPool)
+       refresh_interval  =  r.get('spider_monitor_refresh_time')
        watcher()
-       time.sleep(300)
-
-
-
-
-
+       print("refresh_interval!!!:")
+       print(refresh_interval)
+       time.sleep(int(refresh_interval) * 60)
